@@ -1,7 +1,11 @@
-export const Button = (props) => {
-    return (
-        <button type="submit" className="w-full text-xl bg-blue-500 text-white font-bold py-2 px-6 rounded drop-shadow-xl shadow-xl inline-flex items-center">
-        {props.title}
-        </button>
-    );
+import classes from './Button.module.css';
+
+export default function Button(props) {
+  return (
+    <button
+      type="submit"
+      className={`${classes.button} text-xl text-black font-bold py-2 px-6 rounded drop-shadow-xl shadow-xl inline-flex items-center`}>
+      {props.children}
+    </button>
+  );
 }

@@ -3,7 +3,7 @@ import { Logger } from '@lib';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prismaClient } from '@lib/prisma.client';
 import { isAuthenticated } from '@lib/is-authenticated';
-import { InternalServerError, UnexpectedError } from '@lib/http-errors';
+import { InternalServerError, UnexpectedError, UnsupportedMethodError } from '@lib/http-errors';
 
 const logger = new Logger('api/login');
 
@@ -68,11 +68,11 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
           });
         break;
       default:
-        return res.status(400).json(InternalServerError);
+        return res.status(405).json(UnsupportedMethodError);
     }
   } catch (err) {
     logger.error('unable to perform op based on method:', err);
-    return res.status(500).json(UnexpectedError);
+    return res.status(500).json(InternalServerError);
   }
 }
 
