@@ -11,8 +11,8 @@ datasource db {
 }
 
 model User {
-  id String @id @default(uuid())
-  eventId   String      @unique
+  id        Int         @id @default(autoincrement())
+  eventId   Int         @unique
   email     String      @unique
   name      String
   imgUrl    String?
@@ -26,22 +26,22 @@ model User {
 }
 
 model Languages {
-  id String @id @default(uuid())
-  uid      String @unique @db.Uuid
+  id       Int    @id @default(autoincrement())
+  uid      Int    @unique
   language String
   user     User   @relation(fields: [uid], references: [id])
 }
 
 model Interests {
-  id String @id @default(uuid())
-  uid      String @unique
+  id       Int    @id @default(autoincrement())
+  uid      Int    @unique
   interest String
   user     User   @relation(fields: [uid], references: [id])
 }
 
 model Questions {
-  id String @id @default(uuid())
-  uid       String   @unique
+  id        Int      @id @default(autoincrement())
+  uid       Int      @unique
   question  String
   answer    String
   updatedAt DateTime @updatedAt
@@ -50,7 +50,7 @@ model Questions {
 }
 
 model Event {
-  id String @id @default(uuid())
+  id        Int      @id @default(autoincrement())
   title     String
   imgUrl    String
   createdAt DateTime
