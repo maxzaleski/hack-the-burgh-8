@@ -11,18 +11,19 @@ datasource db {
 }
 
 model User {
-  id        Int         @id @default(autoincrement())
-  eventId   Int         @unique
-  email     String      @unique
-  name      String
-  imgUrl    String?
-  jobTitle  String
-  tagline   String?
-  updatedAt DateTime    @updatedAt
-  createdAt DateTime
-  languages Languages[]
-  interests Interests[]
-  questions Questions[]
+  id              Int               @id @default(autoincrement())
+  eventId         Int               @unique
+  email           String            @unique
+  name            String
+  imgUrl          String?
+  jobTitle        String
+  tagline         String?
+  updatedAt       DateTime          @updatedAt
+  createdAt       DateTime
+  languages       Languages[]
+  interests       Interests[]
+  questions       Questions[]
+  TempConnections TempConnections[]
 }
 
 model Languages {
@@ -56,4 +57,14 @@ model Event {
   createdAt DateTime
   startDate DateTime
   endDate   DateTime
+}
+
+model TempConnections {
+  id        Int      @id @default(autoincrement())
+  eventId   Int      @unique
+  uid       Int
+  user      User     @relation(fields: [uid], references: [id])
+  cuid      Int
+  met       Boolean
+  updatedAt DateTime @updatedAt
 }
