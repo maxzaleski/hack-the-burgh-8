@@ -40,13 +40,13 @@ export function useSSR(callback: Callback): (ctx: Context) => void {
     }
 
     return { ...(await callback(ctx, result.idToken)) };
-  };
+  }
 }
 
 async function refreshIdToken(token: string): Promise<IAuthCookieContent> {
   // I know how this looks, but this key is not a security token per-say:
   // https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public/37484053#37484053
-  const API_KEY = 'YOUR API KEY';
+  const API_KEY = 'AIzaSyCtvuGqyCSkjFi2pzzr2gNm5J-wsns63so';
   const scheme = process.env.FIREBASE_AUTH_EMULATOR_HOST
     ? 'http://' + process.env.FIREBASE_AUTH_EMULATOR_HOST
     : 'https:/';
