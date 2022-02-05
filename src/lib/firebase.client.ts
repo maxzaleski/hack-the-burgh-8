@@ -13,6 +13,7 @@ export const cfg = {
   messagingSenderId: "366808960610",
   appId: "1:366808960610:web:a404c5ab8415398d384b3b",
   measurementId: "G-D5V6TLDCQX"
+
 };
 if (!firebase.apps.length) firebase.initializeApp(cfg);
 
