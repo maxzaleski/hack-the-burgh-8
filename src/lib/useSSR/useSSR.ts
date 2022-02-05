@@ -40,7 +40,7 @@ export function useSSR(callback: Callback): (ctx: Context) => void {
     }
 
     return { ...(await callback(ctx, result.idToken)) };
-  };
+  }
 }
 
 async function refreshIdToken(token: string): Promise<IAuthCookieContent> {

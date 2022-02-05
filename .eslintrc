@@ -1,7 +1,4 @@
 {
-  "extends": ["next", "next/core-web-vitals"],
-  "rules": {
-    "react-hooks/rules-of-hooks": false,
     "react-hooks/exhaustive-deps": false
-  }
+    "react-hooks/rules-of-hooks": false,
 }

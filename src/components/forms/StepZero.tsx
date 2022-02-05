@@ -29,8 +29,8 @@ export default function StepZero(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="username" id="username" type="text" placeholder='Bobby'/>
-                            <ErrorMessage name="username" component="div" className="text-red-500 text-xs italic"/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="firstName" id="firstName" type="text" placeholder='Bobby'/>
+                            <ErrorMessage name="firstName" component="div" className="text-red-500 text-xs italic"/>
                             {
                                 (props.errors.hasOwnProperty('firstName') && !touched.firstName) && (
                                     <p className="text-red-500 text-xs italic">{props.errors.firstName}</p>
@@ -42,13 +42,13 @@ export default function StepZero(props) {
                         {/* input start */}
                         <div className="md:flex md:items-center mb-6">
                             <div className="md:w-1/3">
-                            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="username">
+                            <label className="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="lastName">
                                 Last Name
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="username" id="username" type="text" placeholder='Shmurda'/>
-                            <ErrorMessage name="username" component="div" className="text-red-500 text-xs italic"/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="lastName" id="lastName" type="text" placeholder='Shmurda'/>
+                            <ErrorMessage name="lastName" component="div" className="text-red-500 text-xs italic"/>
                             {
                                 (props.errors.hasOwnProperty('lastName') && !touched.lastName) && (
                                     <p className="text-red-500 text-xs italic">{props.errors.lastName}</p>
@@ -65,7 +65,7 @@ export default function StepZero(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="email" id="email" type="text" placeholder='bobby@andmedia.com'/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="email" id="email" type="text" placeholder='bobby@andmedia.com'/>
                             <ErrorMessage name="email" component="div" className="text-red-500 text-xs italic"/>
                             {
                                 (props.errors.hasOwnProperty('email') && !touched.email) && (
@@ -83,7 +83,7 @@ export default function StepZero(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="password" id="password" type="password" placeholder="********"/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="password" id="password" type="password" placeholder="********"/>
                             <ErrorMessage name="password" component="div" className="text-red-500 text-xs italic"/>
                             </div>
                         </div>
@@ -96,7 +96,7 @@ export default function StepZero(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="confirmPassword" id="confirmPassword" type="password"  placeholder="********"/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="confirmPassword" id="confirmPassword" type="password"  placeholder="********"/>
                             <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-xs italic"/>
                             </div>
                         </div>
@@ -109,7 +109,7 @@ export default function StepZero(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="profilePicture" id="profilePicture" type="profilePicture"  placeholder="test"/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="profilePicture" id="profilePicture" type="profilePicture"  placeholder="test"/>
                             <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-xs italic"/>
                             </div>
                         </div>

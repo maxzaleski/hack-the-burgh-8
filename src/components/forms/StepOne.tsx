@@ -34,7 +34,7 @@ export default function StepOne(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="code" id="code" type="code"  placeholder="123456"/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="code" id="code" type="code"  placeholder="123456"/>
                             <ErrorMessage name="code" component="div" className="text-red-500 text-xs italic"/>
                             </div>
                         </div>
@@ -47,7 +47,7 @@ export default function StepOne(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="username" id="username" type="text" placeholder='She/Her'/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="username" id="username" type="text" placeholder='She/Her'/>
                             <ErrorMessage name="username" component="div" className="text-red-500 text-xs italic"/>
                             {
                                 (props.errors.hasOwnProperty('pronouns') && !touched.pronouns) && (
@@ -65,7 +65,7 @@ export default function StepOne(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="interests" id="interests" type="text" placeholder='Baseball'/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="interests" id="interests" type="text" placeholder='Baseball'/>
                             <ErrorMessage name="username" component="div" className="text-red-500 text-xs italic"/>
                             {
                                 (props.errors.hasOwnProperty('interests') && !touched.interests) && (
@@ -83,7 +83,7 @@ export default function StepOne(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="languages" id="languages" type="text" placeholder='Chinese'/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="languages" id="languages" type="text" placeholder='Chinese'/>
                             <ErrorMessage name="email" component="div" className="text-red-500 text-xs italic"/>
                             {
                                 (props.errors.hasOwnProperty('email') && !touched.email) && (
@@ -101,7 +101,7 @@ export default function StepOne(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="jobTitle" id="jobTitle" type="text" placeholder='Software Developer'/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="jobTitle" id="jobTitle" type="text" placeholder='Software Developer'/>
                             <ErrorMessage name="jobTitle" component="div" className="text-red-500 text-xs italic"/>
                             {
                                 (props.errors.hasOwnProperty('jobTitle') && !touched.jobTitle) && (
@@ -119,7 +119,7 @@ export default function StepOne(props) {
                             </label>
                             </div>
                             <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-red-500" name="jobTitle" id="jobTitle" type="text" placeholder='Software Developer'/>
+                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-black" name="jobTitle" id="jobTitle" type="text" placeholder='Software Developer'/>
                             <ErrorMessage name="jobTitle" component="div" className="text-red-500 text-xs italic"/>
                             {
                                 (props.errors.hasOwnProperty('jobTitle') && !touched.jobTitle) && (

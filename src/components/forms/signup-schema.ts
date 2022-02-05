@@ -4,6 +4,12 @@ const stepZeroSchema = Yup.object({
     username: Yup.string()
         .required('Username is required')
         .max(16, 'Username must be 16 characters or less'),
+    firstName: Yup.string()
+        .required('First name is required')
+        .max(16, 'First name must be 16 characters or less'),
+    lastName: Yup.string()
+        .required('Last name is required')
+        .max(16, 'Last name must be 16 characters or less'),
     email: Yup.string().email("Must be a valid email").required('Email is required'),
     password: Yup.string()
         .required('Password is required')
@@ -24,4 +30,4 @@ const stepOneSchema = Yup.object({
     pronouns: Yup.string()
 })
 
-export { stepZeroSchema };
+export { stepZeroSchema, stepOneSchema };

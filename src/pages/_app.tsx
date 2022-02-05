@@ -3,7 +3,7 @@ import { AuthProvider } from '@providers';
 import Layout from 'src/components/Layout/Layout';
 import '@styles/index.css';
 
-export default function _App({ Component, pageProps: props }) {
+export default function _App({ Component, pageProps: props }: any) {
   return (
     <AuthProvider>
       <Layout>
@@ -12,6 +12,3 @@ export default function _App({ Component, pageProps: props }) {
     </AuthProvider>
   );
 }
-
-// https://nextjs.org/docs/advanced-features/measuring-performance
-export function reportWebVitals(metric) {}
