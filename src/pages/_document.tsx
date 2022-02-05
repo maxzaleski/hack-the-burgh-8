@@ -4,9 +4,9 @@ import Document, { Head, Html, Main, NextScript } from 'next/document';
 export default class _Document extends Document {
   render() {
     return (
-      <Html>
+      <Html className='h-full'>
         <Head>{/*  Add your manifest assets here */}</Head>
-        <body>
+        <body className='h-full'>
           <Main />
         </body>
         <NextScript />
