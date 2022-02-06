@@ -1,5 +1,5 @@
 import { Field, Form, Formik, ErrorMessage } from 'formik';
-import { Button } from '../../components/common';
+import { WhiteButton } from '../../components/common';
 import { stepOneSchema } from './signup-schema';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -239,7 +239,7 @@ export default function StepOne(props) {
                         <div className="text-center md:text-left md:flex md:items-center">
                         <div className="md:w-1/3"></div>
                         <div className="mt-8 md:w-2/3">
-                            <Button title="submit"/>
+                            <WhiteButton title="submit"/>
                         </div>
                         </div>
                         </Form>

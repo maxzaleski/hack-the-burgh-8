@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
-import { Button } from '../../components/common';
+import { WhiteButton } from '../../components/common';
 
 import { GoogleLogin } from 'react-google-login';
 
@@ -85,7 +85,7 @@ export default function SignInForm() {
         <div className="mt-8 md:w-2/3">
             <div className="inline-flex items-center" >
 
-            <Button title="Sign In"/>
+            <WhiteButton title="Sign In"/>
             </div>
              <div>
                  <h1 className="text-white text-xl pt-12">
