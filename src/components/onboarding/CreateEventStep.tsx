@@ -21,7 +21,9 @@ export const CreateEventStep = (props) => {
           title,
           imgUrl: undefined,
         }),
-      }).finally(() => setLoading(false));
+      })
+        .then(() => firebaseUser?.getIdToken(true))
+        .then(() => props.next());
     }
   };
 
