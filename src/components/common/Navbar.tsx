@@ -12,10 +12,10 @@ export default function Navbar() {
       <Link href={props.path}>
         <li
           className={`${
-            path == props.path ? 'bg-red-100' : ''
+            path == props.path ? 'bg-blue-100' : ''
           } w-full h-full flex items-center justify-evenly`}>
           <button
-            className={`${path == props.path ? 'text-red-600' : ''} flex flex-col items-center`}
+            className={`${path == props.path ? 'text-blue-600' : ''} flex flex-col items-center`}
             style={{
               fontSize: '90%',
               fontWeight: 'bold',
