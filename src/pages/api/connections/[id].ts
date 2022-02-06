@@ -15,13 +15,13 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     switch (req.method) {
       case 'GET':
-        prismaClient.tempConnections
+        return prismaClient.tempConnections
           .findMany({
             where: {
               user: {
                 firebaseId: decodeIdToken.uid,
               },
-              eventId: 0, // TODO(MZ): include from claims
+              eventId: decodeIdToken['event_id'],
             },
           })
           .then((connections) =>
@@ -33,13 +33,12 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             logger.error('unable to get connections:', err);
             return res.status(500).json(InternalServerError);
           });
-        break;
       case 'PUT':
-        prismaClient.tempConnections
+        return prismaClient.tempConnections
           .update({
             where: {
               id: Number(req.query.id as string),
-              eventId: 0, // TODO(MZ): include from claims
+              eventId: decodeIdToken['event_id'],
             },
             data: {
               met: true,
@@ -54,7 +53,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             logger.error('unable to get connections:', err);
             return res.status(500).json(InternalServerError);
           });
-        break;
       default:
         return res.status(405).json(UnsupportedMethodError);
     }

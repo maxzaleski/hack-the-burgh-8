@@ -15,7 +15,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     switch (req.method) {
       case 'GET':
-        prismaClient.event
+        return prismaClient.event
           .findUnique({
             where: {
               id: Number(req.query.id as string),
@@ -28,9 +28,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             logger.error('unable to get event:', err);
             return res.status(500).json(InternalServerError);
           });
-        break;
       case 'POST':
-        prismaClient.event
+        return prismaClient.event
           .create({
             data: {
               title: req.body.title as string,
@@ -45,9 +44,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             logger.error('unable to create event:', err);
             return res.status(500).json(InternalServerError);
           });
-        break;
       case 'PUT':
-        prismaClient.event
+        return prismaClient.event
           .update({
             where: {
               id: Number(req.query.id as string), // TODO(MZ): replace with claims
@@ -65,7 +63,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             logger.error('unable to create event:', err);
             return res.status(500).json(InternalServerError);
           });
-        break;
       default:
         return res.status(405).json(UnsupportedMethodError);
     }
