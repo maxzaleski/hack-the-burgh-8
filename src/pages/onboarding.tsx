@@ -1,15 +1,9 @@
-import { useRouter } from 'next/router';
-import React, { useState } from 'react';
-import { auth } from '@lib';
+import React from 'react';
 import { useSSR } from '@lib/useSSR';
-import { LOGIN_PATH } from '@lib/common';
-import { useAuth } from '@hooks';
-import StepZero from '../components/forms/StepZero';
-import StepOne from '../components/forms/StepOne';
-import { CreateEventStep, EventCodeStep } from '../components/onboarding';
+import { CompleteDetailsStep, CreateEventStep } from '../components/onboarding';
 
 export default function OnboardingPage(props) {
-  const [currentStep, setCurrentStep] = React.useState(0);
+  const [currentStep, setCurrentStep] = React.useState(1);
 
   const handleNextStep = (newData) => {
     setCurrentStep(currentStep + 1);
@@ -20,8 +14,8 @@ export default function OnboardingPage(props) {
   };
 
   const steps = [
-    // <EventCodeStep next={handleNextStep} data={data} errors={errors} />,
-    <CreateEventStep next={handleNextStep} prev={handlePrevStep} />,
+    <CreateEventStep next={handleNextStep} />,
+    <CompleteDetailsStep next={handleNextStep} prev={handlePrevStep} />,
   ];
   return <div className="h-full bg-neutral-900 text-white">{steps[currentStep]}</div>;
 }

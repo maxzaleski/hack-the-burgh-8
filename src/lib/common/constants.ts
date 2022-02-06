@@ -6,6 +6,7 @@ export const AUTH_COOKIE_SIGNED_SECRET = process.env.COOKIE_SIGNED_KEY || 'fooba
 export const API_LOGIN_PATH = '/api/login';
 export const API_LOGOUT_PATH = '/api/logout';
 export const API_EVENT_PATH = '/api/events';
+export const API_USERS_PATH = '/api/users';
 
 export const ONBOARDING_PATH = '/onboarding';
 
