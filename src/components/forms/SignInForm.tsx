@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import Link from 'next/link';
+import { Button } from '../../components/common';
+
+import { GoogleLogin } from 'react-google-login';
 
 export default function SignInForm() {
     const navigate = useRouter();
@@ -42,7 +45,7 @@ export default function SignInForm() {
     },})
 
     return (
-        <div  data-aos="fade-up">
+        <div>
         <form onSubmit={formik.handleSubmit} className="w-full max-w-sm m-auto mt-10">
         {/* input start */}
         <div className="md:flex md:items-center mb-6">
@@ -80,7 +83,18 @@ export default function SignInForm() {
         <div className="text-center md:text-left md:flex md:items-center">
         <div className="md:w-1/3"></div>
         <div className="mt-8 md:w-2/3">
-            <input type="submit" value="Login" className="text-xl bg-blue-500 text-white font-bold py-2 px-6 rounded drop-shadow-xl shadow-xl inline-flex items-center hover:cursor-pointer" />
+            <div className="inline-flex items-center" >
+
+            <Button title="Sign In"/>
+            </div>
+             <div>
+                 <h1 className="text-white text-xl pt-12">
+                    Or Login with Google
+                    <svg className="fill-white ml-1 inline-block align-middle" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="24" height="24"
+                viewBox="0 0 24 24">    <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032 s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2 C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"></path></svg>
+                     </h1>
+             </div>
         </div>
         </div>
         </form>

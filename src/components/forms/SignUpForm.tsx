@@ -59,7 +59,11 @@ export default function SignUpForm() {
     const handleNextStep = (newData) => {
         setErrors({});
         setData(prev => ({ ...prev, ...newData }));
-        submissionRequest(newData);
+        if (step === 1) {
+            submissionRequest(newData);
+        } else {
+            setStep((prev) => prev + 1);
+        }
     }
     
     const handlePrevStep = (newData) => {

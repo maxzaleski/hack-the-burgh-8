@@ -1,9 +1,6 @@
 import * as Yup from 'yup';
 
 const stepZeroSchema = Yup.object({
-    username: Yup.string()
-        .required('Username is required')
-        .max(16, 'Username must be 16 characters or less'),
     firstName: Yup.string()
         .required('First name is required')
         .max(16, 'First name must be 16 characters or less'),
