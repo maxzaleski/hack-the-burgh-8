@@ -1,13 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import TinderCard from 'react-tinder-card';
 import { ClipboardListIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
 import Button from 'src/components/common/Button';
 import UserCard from 'src/components/common/UserCard';
 import User from '@lib/schemas/user';
 import { Shell } from '../components/Layout';
-
 
 let DUMMY_USERS = [
   {
@@ -16,7 +14,7 @@ let DUMMY_USERS = [
     job: 'CEO',
     interests: ['Art', 'Dogs', 'Plants', 'Movies', 'Cars'],
     languages: ['English', 'French'],
-    pronouns: 'He/him',
+    pronouns: 'They/Them',
     andtitle: 'CEO & Gamer',
     id: '3',
   },
@@ -26,7 +24,7 @@ let DUMMY_USERS = [
     job: 'Software Engineer',
     interests: ['Languages', 'Monkeys', 'Cats', 'Movies', 'Cars'],
     languages: ['English', 'French'],
-    pronouns: 'He/him',
+    pronouns: 'He/Him',
     andtitle: 'Software Engineer & Musician',
     id: '2',
   },
@@ -36,25 +34,24 @@ let DUMMY_USERS = [
     job: 'UI/UX Designer',
     interests: ['Art', 'Dogs', 'Plants', 'Movies', 'Cars'],
     languages: ['English', 'French'],
-    pronouns: 'He/him',
+    pronouns: 'She/Her',
     andtitle: 'UI/UX Designer & Gardener',
-    id: '1',
-  },
-  {
-    img: 'https://images.generated.photos/403XQYVjUB0PcSlY_yboimeRFRe7hUyb2DsFGACtkb4/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzQzNDY3LmpwZw.jpg',
-    name: `Jong Xina`,
-    job: 'UI/UX Designer',
-    interests: ['Art', 'Dogs', 'Plants', 'Movies', 'Cars'],
-    languages: ['English', 'French'],
-    pronouns: 'He/him',
-    andtitle: 'UI/UX Designer & Gamer',
     id: '1',
   },
 ];
 
 export default function Index() {
   const router = useRouter();
-  const [profile, setProfile] = useState<User | undefined>(DUMMY_USERS.pop());
+  const [profile, setProfile] = useState<User | undefined>({
+    img: 'https://images.generated.photos/403XQYVjUB0PcSlY_yboimeRFRe7hUyb2DsFGACtkb4/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzQzNDY3LmpwZw.jpg',
+    name: `Bin Cilin`,
+    job: 'UI/UX Designer & Full Time Legend',
+    interests: ['Art', 'Dogs', 'Plants', 'Movies', 'Cars'],
+    languages: ['English', 'French'],
+    pronouns: 'She/Her',
+    andtitle: 'UI/UX Designer & Gamer',
+    id: '1',
+  });
 
   const fetchProfile = () => {
     return DUMMY_USERS.pop();
@@ -64,31 +61,43 @@ export default function Index() {
     // fetch a profile
     const fetchedProfile = fetchProfile();
 
+    DUMMY_USERS = [fetchedProfile].concat(DUMMY_USERS);
+
     setProfile(fetchedProfile);
     // setProfiles([fetchedProfile].concat(profiles));
   };
 
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setProfile(fetchProfile());
+  //   }, 1);
+
+  //   return () => clearTimeout(timer);
+  // });
+
   return (
-    <div className="flex flex-col items-center">
-      <Link href="/scoreboard">
-        <Button className="flex justify-between gap-2">
-          <ClipboardListIcon className="w-7 h-7" />
-          Scoreboard
-        </Button>
-      </Link>
-      <UserCard
-        key={profile.id}
-        title={
-          <h1 className="text-3xl text-slate-900 flex flex-row justify-between items-center">
-            Profile
-            <Button onClick={changeProfileHandler} className="mb-2">
-              Next <ArrowCircleRightIcon className="w-7 h-7" />
-            </Button>
-          </h1>
-        }
-        user={profile}
-      />
-    </div>
+    <Shell>
+      <div className="flex flex-col items-center mt-4">
+        <Link href="/scoreboard">
+          <Button className="flex justify-between gap-2">
+            <ClipboardListIcon className="w-7 h-7" />
+            Scoreboard
+          </Button>
+        </Link>
+        <UserCard
+          key={profile.id}
+          title={
+            <h1 className="text-3xl text-slate-900 flex flex-row justify-between items-center">
+              Profile
+              <Button onClick={changeProfileHandler} className="mb-2">
+                Next <ArrowCircleRightIcon className="w-7 h-7" />
+              </Button>
+            </h1>
+          }
+          user={profile}
+        />
+      </div>
+    </Shell>
   );
 }
 
