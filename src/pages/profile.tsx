@@ -1,7 +1,7 @@
 import Card from 'src/components/profile/Card';
 import Pill from 'src/components/profile/Pill';
 import Image from 'next/image';
-import { Button } from 'src/components/common/Button';
+import Button from 'src/components/common/Button';
 
 interface Props {
   user: {

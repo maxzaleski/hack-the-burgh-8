@@ -9,7 +9,13 @@ const logger = new Logger('AuthContext');
 
 export interface IAuthContext {
   firebaseUser: firebase.User | null;
+  tokenClaims?: ITokenClaims;
   signOut(): Promise<void>;
+}
+
+export interface ITokenClaims {
+  uid: string;
+  event_id: string;
 }
 
 export const AuthContext = React.createContext<IAuthContext>({} as IAuthContext);
@@ -18,6 +24,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   const [loading, setLoading] = React.useState(true);
   const [firebaseUser, setFirebaseUser] = React.useState<firebase.User | null>(null);
   const [idToken, setIdToken] = React.useState('');
+  const [tokenClaims, setTokenClaims] = React.useState({} as ITokenClaims);
 
   const reset = React.useCallback(() => {
     setIdToken('');
@@ -51,9 +58,14 @@ export const AuthProvider: React.FC = ({ children }) => {
         //  2. Set sever-only cookie which will enable SSR.
         if (user) {
           try {
-            const idToken = await user.getIdToken();
-            mergeSetIdToken(idToken);
-            await fetch(API_LOGIN_PATH, getRequestOptions(`${idToken}+${user.refreshToken}`));
+            const { token, claims } = await user.getIdTokenResult();
+            mergeSetIdToken(token);
+            setTokenClaims({
+              uid: claims['user_id'] as string,
+              event_id: claims['event_id'] as string,
+            });
+
+            await fetch(API_LOGIN_PATH, getRequestOptions(`${token}+${user.refreshToken}`));
           } catch (err) {
             reset();
             logger.error('Cookie.set: %s', err);
@@ -86,8 +98,8 @@ export const AuthProvider: React.FC = ({ children }) => {
   }, [idToken, auth.signOut]);
 
   const value = React.useMemo<IAuthContext>(
-    () => ({ firebaseUser, signOut }),
-    [firebaseUser, signOut]
+    () => ({ firebaseUser, signOut, tokenClaims }),
+    [firebaseUser, signOut, tokenClaims]
   );
   return loading ? (
     // Custom your loading page/state.
