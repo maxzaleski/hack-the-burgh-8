@@ -18,7 +18,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "paths": {
       "@styles/*": ["styles/*"],
-      "@providers": ["src/providers"],
+      "@contexts": ["src/contexts"],
       "@lib": ["src/lib"],
       "@lib/*": ["src/lib/*"],
       "@lib/common": ["src/lib/common"],
