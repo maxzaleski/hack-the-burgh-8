@@ -23,10 +23,10 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             },
           })
           .then((user) =>
-            user ? res.status(200).json(user) : res.status(404).json({ error: 'Event not found' })
+            user ? res.status(200).json(user) : res.status(404).json({ error: 'User not found' })
           )
           .catch((err) => {
-            logger.error('unable to get event:', err);
+            logger.error('unable to get user:', err);
             return res.status(500).json(InternalServerError);
           });
         break;
@@ -41,9 +41,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
               jobTitle: req.body.jobTitle as string,
               tagline: req.body.tagline as string,
               createdAt: new Date(),
-
-              languages: req.body.languages,
-              interests: req.body.interests,  
             },
           })
           .then((event) => res.status(201).json(event))
@@ -51,26 +48,90 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
             logger.error('unable to create event:', err);
             return res.status(500).json(InternalServerError);
           });
+
+        if (req.body.interests) {
+          req.body.interests.map((interest: any) => ({ uid: Number(req.query.id), interest }));
+
+          prismaClient.interests.createMany({
+            data: req.body.interests,
+          });
+        } else {
+          return res.status(400).json({ error: 'Bad Request', message: 'No interests in body' });
+        }
+
+        interface questions {
+          question: string;
+          answer: string;
+        }
+
+        req.body.questions.map((questions: questions) => ({
+          uid: req.query.id,
+          question: questions.question,
+          answer: questions.answer,
+          updatedAt: new Date(),
+          createdAt: new Date(),
+        }));
+
+        prismaClient.questions.createMany({
+          data: req.body.questions,
+        });
+
         break;
       case 'PUT':
-        prismaClient.event
+        prismaClient.user
           .update({
             where: {
-              id: Number(req.query.id as string), // TODO(MZ): replace with claims
+              id: Number(req.query.id as string),
             },
             data: {
-              title: req.body.title as string,
+              eventId: req.body.eventId as number,
+              email: req.body.email as string,
+              name: req.body.name as string,
               imgUrl: req.body.imgUrl as string,
-              startDate: new Date(req.body.startDate as string),
-              endDate: new Date(req.body.endDate as string),
+              jobTitle: req.body.jobTitle as string,
+              tagline: req.body.tagline as string,
               createdAt: new Date(),
             },
           })
-          .then((event) => res.status(200).json(event))
+          .then((user) => res.status(201).json(user))
           .catch((err) => {
-            logger.error('unable to create event:', err);
+            logger.error('unable to update user:', err);
             return res.status(500).json(InternalServerError);
           });
+
+        let data = [];
+
+        for (let interest in req.body.interests) {
+          data.push({ uid: Number(req.query.id), interest });
+        }
+
+        prismaClient.interests.updateMany({
+          where: {
+            uid: Number(req.query.id as string),
+          },
+          data: data,
+        });
+
+        interface questions {
+          question: string;
+          answer: string;
+        }
+
+        req.body.questions.map((questions: questions) => ({
+          uid: req.query.id,
+          question: questions.question,
+          answer: questions.answer,
+          updatedAt: new Date(),
+          createdAt: new Date(),
+        }));
+
+        prismaClient.questions.updateMany({
+          where: {
+            uid: Number(req.query.id as string),
+          },
+          data: req.body.questions,
+        });
+
         break;
       default:
         return res.status(400).json(InternalServerError);
