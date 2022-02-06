@@ -28,7 +28,7 @@ export default function ScanPage() {
     setShowModal(!showModal);
     setCodeData(null);
   };
-
+  //<p>The Value is {codeData}</p>
   return (
     <Shell>
       <div className="relative flex flex-col h-full w-screen bg-slate-100">
@@ -43,7 +43,7 @@ export default function ScanPage() {
               className="modal px-6 flex h-full items-center justify-center"
               onClick={modalHandler}>
               <div className="bg-white rounded-lg shadow-md p-6">
-                <p>The Value is {codeData}</p>
+                <h1>You are now friends with John Doe!</h1>
               </div>
             </div>
           </div>

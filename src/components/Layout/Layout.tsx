@@ -1,7 +1,7 @@
 import { useAuth } from '@hooks';
 import { ReactNode } from 'react';
 import LogoBar from '../common/Logobar';
-import Navbar from '../UI/Navbar/Navbar';
+import Navbar from '../common/Navbar';
 
 export default function Layout({ children }: { children: ReactNode }) {
   const { firebaseUser, signOut } = useAuth();
@@ -11,7 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <section>
         <LogoBar />
       </section>
-      <div className="content mx-auto mb-auto h-full" style={{ overflowY: 'scroll' }}>
+      <div className="content flex flex-col items-center mt-4 h-full w-full" style={{ overflowY: 'scroll' }}>
         {children}
       </div>
       {firebaseUser && (

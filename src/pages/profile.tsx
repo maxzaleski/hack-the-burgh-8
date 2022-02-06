@@ -6,14 +6,24 @@ import { auth } from '@lib';
 import { LOGIN_PATH } from '@lib/common';
 import { useAuth } from '@hooks';
 import UserCard from 'src/components/common/UserCard';
-import User from '@lib/schemas/user';
 import { Shell } from '../components/Layout';
 
-export default function Profile({ user }: User) {
+export default function Profile() {
   const { firebaseUser, signOut } = useAuth();
   const router = useRouter();
   const editHandler = () => {
     router.push('signup/');
+  };
+
+  const user = {
+    img: 'https://images.generated.photos/MnMiiGGAKidu4MUWu15UmMuOMOZGXC4NpFf2h9WyJD8/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NTE3NTUyLmpwZw.jpg',
+    name: 'John Doe',
+    job: 'Software Engineer',
+    interests: ['Languages', 'Monkeys', 'Cats', 'Movies', 'Cars'],
+    languages: ['English', 'French'],
+    pronouns: 'He/him',
+    andtitle: 'Software Engineer & Musician',
+    id: '2',
   };
 
   const logoutHandler = React.useCallback(() => {
@@ -21,13 +31,13 @@ export default function Profile({ user }: User) {
       .then(async () => await router.push(LOGIN_PATH))
       .catch((err) => console.error(err));
   }, [auth]);
-
+  // what the actual fuck is going on
   return (
     <Shell>
       <UserCard
         user={user}
         title={
-          <h1 className="text-3xl text-slate-900 flex flex-row justify-between">
+          <h1 className="text-3xl text-slate-900 flex flex-row justify-between items-center">
             Profile <PencilIcon className="w-7 h-7" onClick={editHandler} />
           </h1>
         }
