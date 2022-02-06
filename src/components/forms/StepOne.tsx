@@ -63,7 +63,7 @@ export default function StepOne(props) {
               <button
                 type="button"
                 onClick={() => {
-                  props.prev(values);
+                  props.prev(formik.values);
                 }}>
                 <svg
                   xmlns="http:www.w3.org/2000/svg"
@@ -159,26 +159,26 @@ export default function StepOne(props) {
                 <OnboardingInput
                   id="title-input"
                   label="Professional Title"
-                  name="title"
+                  name="jobTitle"
                   placeholder="Software Engineer"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
-                  value={formik.values?.title}
-                  touched={formik.touched.title as boolean}
-                  error={formik.errors?.title as string}
+                  value={formik.values?.jobTitle}
+                  touched={formik.touched.jobTitle as boolean}
+                  error={formik.errors?.jobTitle as string}
                 />
                 {/* end input*/}
                 {/* input start */}
                 <OnboardingInput
-                  id="tagline-input"
+                  id="andTitle-input"
                   label="Tagline"
                   name="tagline"
                   placeholder="Software Engineer & Gamer"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
-                  value={formik.values?.title}
-                  touched={formik.touched.title as boolean}
-                  error={formik.errors?.title as string}
+                  value={formik.values?.andTitle}
+                  touched={formik.touched.andTitle as boolean}
+                  error={formik.errors?.andTitle as string}
                 />
                 {/* end input*/}
                 <div className="md:text-2xl md:pt-8 text-2xl text-gray-200 p-3 pb-12 text-center">

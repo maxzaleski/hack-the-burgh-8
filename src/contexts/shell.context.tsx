@@ -21,6 +21,10 @@ export const ShellProvider: React.FC = ({ children }) => {
   const authCtx = useAuth();
   const [event, setEvent] = React.useState({} as Prisma.Event);
 
+  if (!authCtx.tokenClaims?.event_id) {
+    return <>{children}</>;
+  }
+
   React.useEffect(() => {
     if (authCtx.tokenClaims) {
       fetch(API_EVENT_PATH + `/${authCtx.tokenClaims.event_id}`)

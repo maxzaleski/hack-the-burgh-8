@@ -73,17 +73,15 @@ export default function SignInForm() {
           touched={formik.touched.password}
           error={formik.errors?.password}
         />
-        <div className="md:flex md:items-center">
-          <div className="md:w-2/3 text-blue-400 hover:underline">
-            <Link href="/signup">New to ice? Sign Up</Link>
-          </div>
-        </div>
         {/* end input*/}
         <p className="text-center text-red-500 text-xs italic">{error}</p>
         <div className="text-center md:text-left md:flex md:items-center">
           <div className="mt-8 md:w-2/3">
             <div className="inline-flex items-center w-full">
               <WhiteButton title="Sign In" />
+            </div>
+            <div className="md:w-2/3 text-blue-400 hover:underline mt-4">
+              <Link href="/signup">New to ice? Sign Up</Link>
             </div>
             <div>
               <h1 className="text-white text-xl pt-12">

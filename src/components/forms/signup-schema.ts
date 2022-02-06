@@ -12,6 +12,8 @@ const stepZeroSchema = Yup.object({
     .required('Confirm Password is required')
     .oneOf([Yup.ref('password'), null], 'Passwords must match'),
   pronouns: Yup.string(),
+  andTitle: Yup.string(),
+  jobTitle: Yup.string(),
 });
 
 const stepOneSchema = Yup.object({

@@ -14,35 +14,18 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   try {
     switch (req.method) {
-      case 'GET':
+      case 'POST':
         return prismaClient.event
-          .findUnique({
-            where: {
-              id: Number(req.query.id as string),
-            },
-          })
-          .then((event) =>
-            event ? res.status(200).json(event) : res.status(404).json({ error: 'Event not found' })
-          )
-          .catch((err) => {
-            logger.error('unable to get event:', err);
-            return res.status(500).json(InternalServerError);
-          });
-      case 'PUT':
-        return prismaClient.event
-          .update({
-            where: {
-              id: Number(req.query.id as string), // TODO(MZ): replace with claims
-            },
+          .create({
             data: {
               title: req.body.title as string,
-              imgUrl: req.body.imgUrl as string,
-              startDate: new Date(req.body.startDate as string),
-              endDate: new Date(req.body.endDate as string),
+              imgUrl: req.body.imgUrl,
+              startDate: new Date(),
+              endDate: new Date(),
               createdAt: new Date(),
             },
           })
-          .then((event) => res.status(200).json(event))
+          .then((event) => res.status(201).json(event))
           .catch((err) => {
             logger.error('unable to create event:', err);
             return res.status(500).json(InternalServerError);
