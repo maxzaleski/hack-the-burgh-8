@@ -15,7 +15,7 @@ export default function UserCard(props) {
         </div>
       </div>
       <div className="flex justify-center items-center w-full">
-        <div className="bg-red-600 rounded-full text-white max-w-fit p-2 relative top-4">
+        <div className="bg-blue-600 rounded-full text-white max-w-fit p-2 relative top-4">
           <p>{props.user?.andtitle}</p>
         </div>
       </div>

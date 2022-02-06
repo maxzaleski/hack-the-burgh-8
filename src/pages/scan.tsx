@@ -48,7 +48,7 @@ export default function ScanPage() {
             </div>
           </div>
         )}
-        <div className="flex items-center px-4 h-20 bg-red-100 text-red-600">
+        <div className="flex items-center px-4 h-20 bg-blue-100 text-blue-600">
           <p className="text-center" style={{ fontWeight: 'bold', fontSize: '120%' }}>
             Socialise and Scan QR Codes to Earn Points!
           </p>
