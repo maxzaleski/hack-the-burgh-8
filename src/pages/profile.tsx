@@ -7,6 +7,7 @@ import { LOGIN_PATH } from '@lib/common';
 import { useAuth } from '@hooks';
 import UserCard from 'src/components/common/UserCard';
 import User from '@lib/schemas/user';
+import { Shell } from '../components/Layout';
 
 export default function Profile({ user }: User) {
   const { firebaseUser, signOut } = useAuth();
@@ -22,18 +23,21 @@ export default function Profile({ user }: User) {
   }, [auth]);
 
   return (
-    <UserCard
-      user={user}
-      title={
-        <h1 className="text-3xl text-slate-900 flex flex-row justify-between">
-          Profile <PencilIcon className="w-7 h-7" onClick={editHandler} />
-        </h1>
-      }
-      extra={
-        <Button className="w-full bg-red-300 focus:bg-red-600" onClick={logoutHandler}>
-          Sign Out
-        </Button>
-      }></UserCard>
+    <Shell>
+      <UserCard
+        user={user}
+        title={
+          <h1 className="text-3xl text-slate-900 flex flex-row justify-between">
+            Profile <PencilIcon className="w-7 h-7" onClick={editHandler} />
+          </h1>
+        }
+        extra={
+          <Button className="w-full bg-red-300 focus:bg-red-600" onClick={logoutHandler}>
+            Sign Out
+          </Button>
+        }
+      />
+    </Shell>
   );
 }
 

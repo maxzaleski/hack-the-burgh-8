@@ -14,9 +14,7 @@ export default function _App({ Component, pageProps: props }: any) {
   return (
     <AuthProvider>
       <ShellProvider>
-        <Layout>
-          <Component {...props} />
-        </Layout>
+        <Component {...props} />
       </ShellProvider>
     </AuthProvider>
   );

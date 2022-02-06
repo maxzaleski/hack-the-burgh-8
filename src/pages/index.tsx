@@ -6,6 +6,7 @@ import TinderCard from 'react-tinder-card';
 import Button from 'src/components/common/Button';
 import UserCard from 'src/components/common/UserCard';
 import User from '@lib/schemas/user';
+import { Shell } from '../components/Layout';
 export default function Index(props) {
   const router = useRouter();
   const [friend, setFriend] = useState<User | undefined>(props.user);
@@ -26,12 +27,14 @@ export default function Index(props) {
   };
 
   return (
-    <Fragment>
-      <Button>Simple Button</Button>
-      <TinderCard onSwipe={swipeCardHandler}>
-        <UserCard user={friend} />
-      </TinderCard>
-    </Fragment>
+    <Shell>
+      <Fragment>
+        <Button>Simple Button</Button>
+        <TinderCard onSwipe={swipeCardHandler}>
+          <UserCard user={friend} />
+        </TinderCard>
+      </Fragment>
+    </Shell>
   );
 }
 
