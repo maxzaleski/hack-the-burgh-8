@@ -1,5 +1,6 @@
 import { useAuth } from '@hooks';
 import { ReactNode } from 'react';
+import LogoBar from '../common/Logobar';
 import Navbar from '../UI/Navbar/Navbar';
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -7,9 +8,14 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="main flex flex-col h-full">
-      <div className="content flex-grow mx-auto">{children}</div>
+      <section>
+        <LogoBar />
+      </section>
+      <div className="content mx-auto mb-auto h-full" style={{ overflowY: 'scroll' }}>
+        {children}
+      </div>
       {firebaseUser && (
-        <footer className="mt-auto">
+        <footer>
           <Navbar />
         </footer>
       )}

@@ -9,30 +9,27 @@ export default function Navbar() {
 
   const NavButton = (props) => {
     return (
-      <li
-        className={`${
-          path == props.path ? 'bg-blue-100' : ''
-        } w-full h-full flex items-center justify-evenly`}>
-        <Link href={props.path}>
+      <Link href={props.path}>
+        <li
+          className={`${
+            path == props.path ? 'bg-red-100' : ''
+          } w-full h-full flex items-center justify-evenly`}>
           <button
-            className="flex flex-col items-center"
+            className={`${path == props.path ? 'text-red-600' : ''} flex flex-col items-center`}
             style={{
               fontSize: '90%',
               fontWeight: 'bold',
-              color: path == props.path ? 'rgb(37, 99, 235)' : '',
               //textShadow: '-1px -1px 0 #acaaaa, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000',
             }}>
             {props.children}
           </button>
-        </Link>
-      </li>
+        </li>
+      </Link>
     );
   };
 
   return (
-    <nav
-      className="text-xl"
-      style={{ color: '#171717', borderTop: 'solid 1px rgb(203, 213, 225)' }}>
+    <nav className="text-xl text-neutral-900" style={{ borderTop: 'solid 1px rgb(203, 213, 225)' }}>
       <ul className="flex flex-row h-20 items-center justify-evenly">
         <NavButton path="/">
           <HomeIcon className="h-7 w-7" />
