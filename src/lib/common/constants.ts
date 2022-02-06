@@ -10,4 +10,4 @@ export const API_USERS_PATH = '/api/users';
 
 export const ONBOARDING_PATH = '/onboarding';
 
-export const APP_HOME_PATH = '/home';
+export const APP_HOME_PATH = '/';

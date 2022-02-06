@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { Shell } from '../components/Layout';
+import { useAuth } from '@hooks';
 
 const QrReader = dynamic(() => import('react-qr-reader'), { ssr: false });
 
 export default function ScanPage() {
+  const { firebaseUser, signOut } = useAuth();
   const [codeData, setCodeData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const router = useRouter();
@@ -27,6 +29,12 @@ export default function ScanPage() {
     setShowModal(!showModal);
     setCodeData(null);
   };
+
+  useEffect(() => {
+      if (!firebaseUser) {
+          router.push("/login");
+      }
+  })
   //<p>The Value is {codeData}</p>
   return (
     <Shell>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { ArrowCircleRightIcon, ClipboardListIcon } from '@heroicons/react/outline';
@@ -6,6 +6,7 @@ import Button from 'src/components/common/Button';
 import UserCard from 'src/components/common/UserCard';
 import User from '@lib/schemas/user';
 import { Shell } from '../components/Layout';
+import { useAuth } from '@hooks';
 
 let DUMMY_USERS = [
   {
@@ -41,6 +42,7 @@ let DUMMY_USERS = [
 ];
 
 export default function Index() {
+  const { firebaseUser, signOut } = useAuth();
   const router = useRouter();
   const [profile, setProfile] = useState<User | undefined>({
     img: 'https://images.generated.photos/403XQYVjUB0PcSlY_yboimeRFRe7hUyb2DsFGACtkb4/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzQzNDY3LmpwZw.jpg',
@@ -66,6 +68,12 @@ export default function Index() {
     setProfile(fetchedProfile);
     // setProfiles([fetchedProfile].concat(profiles));
   };
+
+  useEffect(() => {
+    if (!firebaseUser) {
+      router.push('/login');
+    }
+  });
 
   // useEffect(() => {
   //   const timer = setTimeout(() => {

@@ -1,10 +1,19 @@
 import { useAuth } from '@hooks';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { ReactNode } from 'react';
 import LogoBar from '../common/Logobar';
 import Navbar from '../common/Navbar';
 
 export default function Layout({ children }: { children: ReactNode }) {
-  const { firebaseUser, signOut } = useAuth();
+  const { tokenClaims, signOut } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!tokenClaims.id) {
+      router.push("/signin");
+    }
+  }, [])
 
   return (
     <div className="main flex flex-col h-full">
