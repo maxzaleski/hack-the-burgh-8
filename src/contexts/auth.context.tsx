@@ -4,6 +4,7 @@ import 'firebase/auth';
 
 import { auth, Logger } from '@lib';
 import { API_LOGIN_PATH, API_LOGOUT_PATH } from '@lib/common';
+import { Loading } from '../components/common';
 
 const logger = new Logger('AuthContext');
 
@@ -103,7 +104,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   );
   return loading ? (
     // Custom your loading page/state.
-    <p>Loading...</p>
+    <Loading />
   ) : (
     <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
   );
