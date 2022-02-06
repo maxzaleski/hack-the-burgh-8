@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { WhiteButton } from '../../components/common';
 
 import { GoogleLogin } from 'react-google-login';
+import { OnboardingInput } from '../common/OnboardingInput';
 
 export default function SignInForm() {
   const navigate = useRouter();
@@ -48,69 +49,31 @@ export default function SignInForm() {
     <div>
       <form onSubmit={formik.handleSubmit} className="w-full max-w-sm m-auto mt-10">
         {/* input start */}
-        <div className="md:flex md:items-center mb-6">
-          <div className="md:w-1/3">
-            <label
-              className="block text-gray-200 font-bold md:text-right md:mb-0 pr-4"
-              htmlFor="username">
-              Username
-            </label>
-          </div>
-          <div className="md:w-2/3">
-            <input
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.username}
-              // className={
-              //   formik.touched.username && formik.errors.username
-              //     ? 'bg-gray-200 appearance-none border border-red-500 w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500'
-              //     : 'bg-gray-200 appearance-none border-2 border-gray-200 w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500'
-              // }
-              className={`h-10 w-full px-4 py-2 my-2 bg-neutral-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-900 placeholder:text-neutral-400 ${
-                formik.touched.username && formik.errors.username ? 'ring-red-500' : 'ring-blue-500'
-              }`}
-              id="username"
-              name="username"
-              type="text"
-              placeholder="john@doe.htb8"
-              maxLength="30"
-            />
-            {formik.touched.username && formik.errors.username ? (
-              <p className="text-red-500 text-xs">{formik.errors.username}</p>
-            ) : null}
-          </div>
-        </div>
+        <OnboardingInput
+          id="username-input"
+          label="Username"
+          name="username"
+          placeholder="john@doe.htb8"
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          value={formik.values.username}
+          touched={formik.touched.username}
+          error={formik.errors?.username}
+        />
         {/* end input*/}
         {/* input start */}
-        <div className="md:flex md:items-center mb-6">
-          <div className="md:w-1/3">
-            <label
-              className="block text-gray-200 font-bold md:text-right md:mb-0 pr-4"
-              htmlFor="tiktok">
-              Password
-            </label>
-          </div>
-          <div className="md:w-2/3">
-            <input
-              placeholder="•••••••••••••"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              value={formik.values.password}
-              className={`h-10 w-full px-4 py-2 my-2 bg-neutral-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-900 placeholder:text-neutral-400 ${
-                formik.touched.username && formik.errors.username ? 'ring-red-500' : 'ring-blue-500'
-              }`}
-              id="password"
-              name="password"
-              type="password"
-              maxLength="30"
-            />
-            {formik.touched.password && formik.errors.password ? (
-              <p className="text-red-500 text-xs">{formik.errors.password}</p>
-            ) : null}
-          </div>
-        </div>
+        <OnboardingInput
+          id="password-input"
+          label="Password"
+          name="password"
+          placeholder="••••••••"
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          value={formik.values.password}
+          touched={formik.touched.password}
+          error={formik.errors?.password}
+        />
         <div className="md:flex md:items-center">
-          <div className="md:w-1/3"></div>
           <div className="md:w-2/3 text-blue-400 hover:underline">
             <Link href="/signup">New to ice? Sign Up</Link>
           </div>
@@ -118,7 +81,6 @@ export default function SignInForm() {
         {/* end input*/}
         <p className="text-center text-red-500 text-xs italic">{error}</p>
         <div className="text-center md:text-left md:flex md:items-center">
-          <div className="md:w-1/3"></div>
           <div className="mt-8 md:w-2/3">
             <div className="inline-flex items-center w-full">
               <WhiteButton title="Sign In" />

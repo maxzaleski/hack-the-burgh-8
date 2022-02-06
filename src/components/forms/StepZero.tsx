@@ -1,126 +1,125 @@
-import { useState } from 'react'; 
-import { useRouter } from 'next/router';
-import { Field, Form, Formik, ErrorMessage } from 'formik';
+import { Form, Formik } from 'formik';
 import { stepZeroSchema } from './signup-schema';
-import { ButtonNext } from '../../components/common';
-import Link from 'next/link'; 
+import { WhiteButton } from '../common';
+import Link from 'next/link';
+import { OnboardingInput } from '../common/OnboardingInput';
 
 export default function StepZero(props) {
-    const handleSubmit = (values, helpers) => {
-        console.log('test');
-        helpers.setTouched({});
-        props.next(values);
-    };
+  const handleSubmit = (values, helpers) => {
+    helpers.setTouched({});
+    props.next(values);
+    helpers.setSubmitting(false);
+  };
 
-    return (
-        <div>
-        <Formik
-            validationSchema={stepZeroSchema}
-            initialValues={props.data}
-            onSubmit={handleSubmit}
-        >{({values, touched}) => (
-            <div>
+  return (
+    <div>
+      <Formik
+        validationSchema={stepZeroSchema}
+        initialValues={props.data}
+        onSubmit={handleSubmit}
+        validateOnBlur>
+        {(formik) => (
+          <div>
             <div className="absolute top-6 left-6">
-            <Link href="/signin">
-                <svg xmlns="http:www.w3.org/2000/svg" className="h-10 w-10 text-gray-200 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <Link href="/signin">
+                <svg
+                  xmlns="http:www.w3.org/2000/svg"
+                  className="h-10 w-10 text-gray-200 hover:text-gray-200"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
-            </Link>
+              </Link>
             </div>
             <div>
-            <p className="md:text-2xl md:mt-8 text-2xl text-gray-200 m-3 text-center">First, let's get to know you.</p>
-            <Form className="w-full max-w-sm m-auto mt-10">
-                         {/* input start */}
-                        <div className="md:flex md:items-center mb-6">
-                            <div className="md:w-1/3">
-                            <label className="block text-gray-300 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="firstName">
-                                First Name
-                            </label>
-                            </div>
-                            <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="firstName" id="firstName" type="text" placeholder='Bobby'/>
-                            <ErrorMessage name="firstName" component="div" className="text-red-500 text-xs italic"/>
-                            {
-                                (props.errors.hasOwnProperty('firstName') && !touched.firstName) && (
-                                    <p className="text-red-500 text-xs italic">{props.errors.firstName}</p>
-                                )
-                            }
-                            </div>
-                        </div>
-                        {/* end input*/}
-                        {/* input start */}
-                        <div className="md:flex md:items-center mb-6">
-                            <div className="md:w-1/3">
-                            <label className="block text-gray-300 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="lastName">
-                                Last Name
-                            </label>
-                            </div>
-                            <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="lastName" id="lastName" type="text" placeholder='Shmurda'/>
-                            <ErrorMessage name="lastName" component="div" className="text-red-500 text-xs italic"/>
-                            {
-                                (props.errors.hasOwnProperty('lastName') && !touched.lastName) && (
-                                    <p className="text-red-500 text-xs italic">{props.errors.lastName}</p>
-                                )
-                            }
-                            </div>
-                        </div>
-                        {/* end input*/}
-                        {/* input start */}
-                            <div className="md:flex md:items-center mb-6">
-                            <div className="md:w-1/3">
-                            <label className="block text-gray-300 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="email">
-                                Email
-                            </label>
-                            </div>
-                            <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="email" id="email" type="text" placeholder='bobby@andmedia.com'/>
-                            <ErrorMessage name="email" component="div" className="text-red-500 text-xs italic"/>
-                            {
-                                (props.errors.hasOwnProperty('email') && !touched.email) && (
-                                    <p className="text-red-500 text-xs italic">{props.errors.email}</p>
-                                )
-                            }
-                            </div>
-                        </div>
-                        {/* end input*/}
-                        {/* input start */}
-                            <div className="md:flex md:items-center mb-6">
-                            <div className="md:w-1/3">
-                            <label className="block text-gray-300 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="email">
-                                Password
-                            </label>
-                            </div>
-                            <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="password" id="password" type="password" placeholder="********"/>
-                            <ErrorMessage name="password" component="div" className="text-red-500 text-xs italic"/>
-                            </div>
-                        </div>
-                        {/* end input*/}
-                        {/* input start */}
-                    <div className="md:flex md:items-center mb-6">
-                            <div className="md:w-1/3">
-                            <label className="block text-gray-300 font-bold md:text-right mb-1 md:mb-0 pr-4" htmlFor="confirmPassword">
-                                Confirm
-                            </label>
-                            </div>
-                            <div className="md:w-2/3">
-                            <Field className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="confirmPassword" id="confirmPassword" type="password"  placeholder="********"/>
-                            <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-xs italic"/>
-                            </div>
-                        </div>
-                        {/* end input*/}
-                        <div className="text-center md:text-left md:flex md:items-center">
-                        <div className="md:w-1/3"></div>
-                        <div className="mt-8 md:w-2/3">
-                        <ButtonNext title="next"/>
-                        </div>
-                        </div>
-                        </Form>
-                        </div>
-        </div>
-        )
-    }</Formik>
+              <p className="md:text-2xl md:mt-8 text-2xl text-gray-200 m-3 text-center">
+                First, let's get to know you.
+              </p>
+              <Form className="w-full max-w-sm m-auto mt-10">
+                {/* input start */}
+                <OnboardingInput
+                  id="name-input"
+                  label="Name"
+                  name="name"
+                  placeholder="John Doe"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values?.name}
+                  touched={formik.touched.name as boolean}
+                  error={formik.errors?.name as string}
+                />
+                {/* end input*/}
+                {/* input start */}
+                <OnboardingInput
+                  id="pronouns-input"
+                  label="Pronouns"
+                  name="pronouns"
+                  placeholder="he/him"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values?.pronouns}
+                  touched={formik.touched.pronouns as boolean}
+                  error={formik.errors?.pronouns as string}
+                />
+                {/* input end */}
+                {/* input start */}
+                <OnboardingInput
+                  id="email-input"
+                  label="Email"
+                  name="email"
+                  type="email"
+                  placeholder="john@doe.htb8"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values?.email}
+                  touched={formik.touched.email as boolean}
+                  error={formik.errors?.email as string}
+                />
+                {/* end input*/}
+                {/* input start */}
+                <OnboardingInput
+                  id="password-input"
+                  label="Password"
+                  name="password"
+                  type="password"
+                  placeholder="•••••••••"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values?.password}
+                  touched={formik.touched.password as boolean}
+                  error={formik.errors?.password as string}
+                />
+                {/* end input*/}
+                {/* input start */}
+                <OnboardingInput
+                  id="confirm-input"
+                  label="Confirm Password"
+                  name="confirm"
+                  type="password"
+                  placeholder="•••••••••"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  value={formik.values?.confirm}
+                  touched={formik.touched.confirm as boolean}
+                  error={formik.errors?.confirm as string}
+                />
+                {/* end input*/}
+                <div className="text-center md:text-left md:flex md:items-center">
+                  <div className="mt-8 md:w-2/3">
+                    <WhiteButton title="Next" />
+                  </div>
+                </div>
+              </Form>
+            </div>
+          </div>
+        )}
+      </Formik>
     </div>
-    );
+  );
 }

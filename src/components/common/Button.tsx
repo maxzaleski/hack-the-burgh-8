@@ -4,7 +4,7 @@ const WhiteButton = (props) => {
   return (
     <button
       type="submit"
-      className="text-xl bg-white text-neutral-900 font-medium py-2 px-6 flex items-center justify-center w-full focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-900 ring-white">
+      className="bg-white font- text-neutral-900 font-medium py-2 px-6 flex items-center justify-center w-full focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-900 ring-white">
       {props.title}
     </button>
   );
