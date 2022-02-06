@@ -3,13 +3,13 @@ import { useSSR } from '@lib/useSSR';
 import { CompleteDetailsStep, CreateEventStep } from '../components/onboarding';
 
 export default function OnboardingPage(props) {
-  const [currentStep, setCurrentStep] = React.useState(1);
+  const [currentStep, setCurrentStep] = React.useState(0);
 
-  const handleNextStep = (newData) => {
+  const handleNextStep = () => {
     setCurrentStep(currentStep + 1);
   };
 
-  const handlePrevStep = (newData) => {
+  const handlePrevStep = () => {
     setCurrentStep(currentStep - 1);
   };
 
