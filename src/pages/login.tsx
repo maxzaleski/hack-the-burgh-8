@@ -11,7 +11,10 @@ export default function Login() {
   // Implement your login callback.
   const onClick = React.useCallback(() => {
     auth
-      .signInWithEmailAndPassword('test@test.com', 'password123')
+      .signInWithEmailAndPassword(
+        process.env.NEXT_PUBLIC_DEV_LOGIN_EMAIL as string,
+        process.env.NEXT_PUBLIC_DEV_LOGIN_PASSWORD as string
+      )
       .then(async () => await router.push('/'))
       .catch((err) => console.error(err));
   }, [auth]);

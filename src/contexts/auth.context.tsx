@@ -15,7 +15,7 @@ export interface IAuthContext {
 
 export interface ITokenClaims {
   uid: string;
-  event_id: string;
+  event_id: number;
 }
 
 export const AuthContext = React.createContext<IAuthContext>({} as IAuthContext);
@@ -62,7 +62,7 @@ export const AuthProvider: React.FC = ({ children }) => {
             mergeSetIdToken(token);
             setTokenClaims({
               uid: claims['user_id'] as string,
-              event_id: claims['event_id'] as string,
+              event_id: claims['event_id'] as number,
             });
 
             await fetch(API_LOGIN_PATH, getRequestOptions(`${token}+${user.refreshToken}`));

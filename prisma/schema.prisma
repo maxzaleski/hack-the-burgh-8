@@ -55,7 +55,7 @@ model Questions {
 model Event {
   id        Int      @id @default(autoincrement())
   title     String
-  imgUrl    String
+  imgUrl    String?
   createdAt DateTime
   startDate DateTime
   endDate   DateTime
