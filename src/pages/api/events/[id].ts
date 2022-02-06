@@ -1,11 +1,10 @@
-import { firebaseAdminSDK } from '@lib/firebase.admin';
 import { Logger } from '@lib';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { prismaClient } from '@lib/prisma.client';
 import { isAuthenticated } from '@lib/is-authenticated';
-import { InternalServerError, UnexpectedError, UnsupportedMethodError } from '@lib/http-errors';
+import { InternalServerError, UnsupportedMethodError } from '@lib/http-errors';
 
-const logger = new Logger('api/login');
+const logger = new Logger('api/events');
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const decodeIdToken = await isAuthenticated(req, res);
