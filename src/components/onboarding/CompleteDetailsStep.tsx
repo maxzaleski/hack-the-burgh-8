@@ -9,27 +9,32 @@ import router from 'next/router';
 
 export const CompleteDetailsStep = (props) => {
   const [loading, setLoading] = React.useState(false);
-  const { tokenClaims } = useAuth();
+  const { firebaseUser, tokenClaims } = useAuth();
 
   const formik = useFormik({
     initialValues: {
       pronouns: '',
       jobTitle: '',
-      andTitle: '',
+      tagline: '',
     },
     validationSchema: Yup.object({
       jobTitle: Yup.string().required('Field is required'),
-      andTitle: Yup.string().required('Field is required'),
+      tagline: Yup.string().required('Field is required'),
     }),
     onSubmit: (values) => {
       setLoading(true);
-      fetch(API_USERS_PATH + `/${tokenClaims?.uid}`, {
-        method: 'PUT',
+      fetch(API_USERS_PATH, {
+        method: 'POST',
         headers: {
           'Content-type': 'application/json',
-          Accept: '*/*',
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify({
+          ...values,
+          firebaseId: tokenClaims?.uid,
+          eventId: tokenClaims?.event_id,
+          name: firebaseUser?.displayName,
+          email: firebaseUser?.email,
+        }),
       })
         .then(() => router.push('/'))
         .catch((err) => console.log(err, err.stack))
@@ -88,12 +93,12 @@ export const CompleteDetailsStep = (props) => {
         <OnboardingInput
           label="Tagline"
           placeholder="Software Engineer & Amateur Boxer"
-          name="andTitle"
-          value={formik.values?.andTitle}
+          name="tagline"
+          value={formik.values?.tagline}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          touched={formik.touched?.andTitle}
-          error={formik.errors?.andTitle}
+          touched={formik.touched?.tagline}
+          error={formik.errors?.tagline}
         />
         <WhiteButton
           title={loading ? 'Updating your profile...' : 'Continue'}

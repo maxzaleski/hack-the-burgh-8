@@ -85,7 +85,7 @@ export default function Index() {
           </Button>
         </Link>
         <UserCard
-          key={profile.id}
+          key={profile?.id}
           title={
             <h1 className="text-3xl text-slate-900 flex flex-row justify-between items-center">
               Profile
