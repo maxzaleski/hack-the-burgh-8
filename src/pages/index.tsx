@@ -79,10 +79,10 @@ export default function Index() {
     <Shell>
       <div className="flex flex-col items-center mt-4">
         <Link href="/scoreboard">
-          <Button className="flex justify-between gap-2">
+          <a className="flex justify-between items-center gap-2">
             <ClipboardListIcon className="w-7 h-7" />
             Scoreboard
-          </Button>
+          </a>
         </Link>
         <UserCard
           key={profile?.id}
