@@ -1,5 +1,5 @@
 import LogoBar from '../common/Logobar';
-import Navbar from '../UI/Navbar/Navbar';
+import Navbar from '../common/Navbar';
 
 export const Shell = (props) => (
   <div className="main flex flex-col h-full">

@@ -31,7 +31,6 @@
     "react-qr-code": "^2.0.3",
     "react-qr-reader": "^2.2.1",
     "react-select": "^5.2.2",
-    "react-tinder-card": "^1.4.5",
     "yup": "^0.32.11"
   },
   "devDependencies": {
