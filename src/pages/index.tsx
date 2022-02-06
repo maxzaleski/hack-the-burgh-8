@@ -69,30 +69,6 @@ export default function Index() {
   };
 
   return (
-<<<<<<< Updated upstream
-    <Shell>
-      <div className="flex flex-col items-center">
-        <Link href="/scoreboard">
-          <Button className="flex justify-between gap-2">
-            <ClipboardListIcon className="w-7 h-7" />
-            Scoreboard
-          </Button>
-        </Link>
-        <UserCard
-          key={profile.id}
-          title={
-            <h1 className="text-3xl text-slate-900 flex flex-row justify-between items-center">
-              Profile
-              <Button onClick={changeProfileHandler} className="mb-2">
-                Next <ArrowCircleRightIcon className="w-7 h-7" />
-              </Button>
-            </h1>
-          }
-          user={profile}
-        />
-      </div>
-    </Shell>
-=======
     <div className="flex flex-col items-center">
       <Link href="/scoreboard">
         <Button className="flex justify-between gap-2">
@@ -113,7 +89,6 @@ export default function Index() {
         user={profile}
       />
     </div>
->>>>>>> Stashed changes
   );
 }
 

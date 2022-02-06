@@ -1,23 +1,26 @@
 import React from 'react';
 import { useSSR } from '@lib/useSSR';
 import { CompleteDetailsStep, CreateEventStep } from '../components/onboarding';
+import { useRouter } from 'next/router';
 
 export default function OnboardingPage(props) {
-  const [currentStep, setCurrentStep] = React.useState(0);
+  const router = useRouter();
+  let { step } = router.query;
+  if (step == undefined) step = '0';
 
   const handleNextStep = () => {
-    setCurrentStep(currentStep + 1);
+    router.push('/onboarding?step=1')
   };
 
   const handlePrevStep = () => {
-    setCurrentStep(currentStep - 1);
+    router.push('/onboarding?step=0')
   };
 
   const steps = [
     <CreateEventStep next={handleNextStep} />,
     <CompleteDetailsStep next={handleNextStep} prev={handlePrevStep} />,
   ];
-  return <div className="h-full bg-neutral-900 text-white">{steps[currentStep]}</div>;
+  return <div className="h-full bg-neutral-900 text-white">{steps[Number(step)]}</div>;
 }
 
 export const getServerSideProps = useSSR(async (ctx, idToken) => {
