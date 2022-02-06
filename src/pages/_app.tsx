@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuthProvider } from '@providers';
+import { AuthProvider } from '@contexts';
 import Layout from 'src/components/Layout/Layout';
 import '@styles/index.css';
 
