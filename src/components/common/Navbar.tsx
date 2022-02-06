@@ -1,4 +1,4 @@
-import { HomeIcon, UserCircleIcon, QrcodeIcon } from '@heroicons/react/outline';
+import { HomeIcon, QrcodeIcon, UserCircleIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React from 'react';

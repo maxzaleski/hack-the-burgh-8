@@ -11,7 +11,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       <section>
         <LogoBar />
       </section>
-      <div className="content flex flex-col items-center mt-4 h-full w-full" style={{ overflowY: 'scroll' }}>
+      <div
+        className="content flex flex-col items-center mt-4 h-full w-full"
+        style={{ overflowY: 'scroll' }}>
         {children}
       </div>
       {firebaseUser && (

@@ -9,11 +9,11 @@ export default function OnboardingPage(props) {
   if (step == undefined) step = '0';
 
   const handleNextStep = () => {
-    router.push('/onboarding?step=1')
+    router.push('/onboarding?step=1');
   };
 
   const handlePrevStep = () => {
-    router.push('/onboarding?step=0')
+    router.push('/onboarding?step=0');
   };
 
   const steps = [

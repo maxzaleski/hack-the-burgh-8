@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { ClipboardListIcon, ArrowCircleRightIcon } from '@heroicons/react/outline';
+import { ArrowCircleRightIcon, ClipboardListIcon } from '@heroicons/react/outline';
 import Button from 'src/components/common/Button';
 import UserCard from 'src/components/common/UserCard';
 import User from '@lib/schemas/user';

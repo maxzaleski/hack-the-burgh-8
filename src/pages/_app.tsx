@@ -1,6 +1,5 @@
 import React from 'react';
 import { AuthProvider, ShellProvider } from '@contexts';
-import Layout from 'src/components/Layout/Layout';
 import '@styles/index.css';
 
 import AOS from 'aos';

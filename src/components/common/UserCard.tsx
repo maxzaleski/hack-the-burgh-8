@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import QRCode from 'react-qr-code';
 import Image from 'next/image';
-import Button from './Button';
 import Card from './Card';
 import Pill from './Pill';
 

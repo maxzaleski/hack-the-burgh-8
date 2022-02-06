@@ -6,14 +6,13 @@ import firebase from 'firebase/app';
 // Read the full thread here:
 // https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public/37484053#37484053
 export const cfg = {
-  apiKey: "AIzaSyCtvuGqyCSkjFi2pzzr2gNm5J-wsns63so",
-  authDomain: "htb8-matching-app.firebaseapp.com",
-  projectId: "htb8-matching-app",
-  storageBucket: "htb8-matching-app.appspot.com",
-  messagingSenderId: "366808960610",
-  appId: "1:366808960610:web:a404c5ab8415398d384b3b",
-  measurementId: "G-D5V6TLDCQX"
-
+  apiKey: 'AIzaSyCtvuGqyCSkjFi2pzzr2gNm5J-wsns63so',
+  authDomain: 'htb8-matching-app.firebaseapp.com',
+  projectId: 'htb8-matching-app',
+  storageBucket: 'htb8-matching-app.appspot.com',
+  messagingSenderId: '366808960610',
+  appId: '1:366808960610:web:a404c5ab8415398d384b3b',
+  measurementId: 'G-D5V6TLDCQX',
 };
 if (!firebase.apps.length) firebase.initializeApp(cfg);
 

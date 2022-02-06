@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import Card from 'src/components/common/Card';
 import { Shell } from '../components/Layout';
 
 const QrReader = dynamic(() => import('react-qr-reader'), { ssr: false });
